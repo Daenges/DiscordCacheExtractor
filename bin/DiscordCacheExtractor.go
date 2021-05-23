@@ -22,7 +22,6 @@ func main() {
 		fmt.Printf("src: %v", src)
 		fmt.Printf("dst: %v", dst)
 		log.Fatal("Invalid paths.")
-		os.Exit(1)
 	}
 
 	files, err := ioutil.ReadDir(src)
@@ -40,7 +39,10 @@ func main() {
 
 	for num, f := range files {
 
-		if (!strings.Contains(f.Name(), "data") && !strings.Contains(f.Name(), "index") || discordMode) && !strings.Contains(f.Name(), ".") {
+		if !strings.Contains(f.Name(), "data") &&
+			(!strings.Contains(f.Name(), "index") || !discordMode) &&
+			!strings.Contains(f.Name(), ".") {
+
 			chunkList = append(chunkList, f)
 		}
 

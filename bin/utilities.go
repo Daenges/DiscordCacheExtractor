@@ -33,13 +33,13 @@ func readArgs() (src string, dst string, pathSeperator string, name string, chun
 	}
 
 	if len(argsWithoutProg) == 1 { // Accept execution with one parameter without defining it with -src
-			src = argsWithoutProg[0]
+		src = argsWithoutProg[0]
 
 	} else {
 		for i := 0; i < len(argsWithoutProg); i++ {
 
 			if argsWithoutProg[i] == "-src" {
-				src = getContentInNextQuotes(argsWithoutProg, i + 1)
+				src = getContentInNextQuotes(argsWithoutProg, i+1)
 				if src[:1] != "\\" {
 					src += "\\"
 				}
@@ -47,7 +47,7 @@ func readArgs() (src string, dst string, pathSeperator string, name string, chun
 			}
 
 			if argsWithoutProg[i] == "-dst" {
-				dst = getContentInNextQuotes(argsWithoutProg, i + 1)
+				dst = getContentInNextQuotes(argsWithoutProg, i+1)
 				if dst[:1] != "\\" {
 					dst += "\\"
 				}
@@ -133,6 +133,7 @@ func getContentInNextQuotes(argSlice []string, startPoint int) (content string) 
 			return
 		}
 	}
+	fmt.Println("No path in quotes found!")
 	return
 }
 
